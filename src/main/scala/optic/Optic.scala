@@ -19,7 +19,5 @@ case class Lens[A,B](desc : List[String]) extends Optic[Lens,A,B] {
   def self = this
 }
 
-case class Prism[A,B](desc : List[String]) extends Optic[Prism,A,B] {
-  def self = this
-}
+
 

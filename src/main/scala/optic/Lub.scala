@@ -17,40 +17,14 @@ object Lub {
     override def compose[A, B, C](o1: Lens[A, B], o2: Lens[B, C]): Lens[A, C] = Lens(o1.desc ++ o2.desc)
   }
 
-  implicit val lensPrism: Aux[Lens, Prism, Traversal] = new Lub[Lens, Prism] {
-    override type T[A, B] = Traversal[A, B]
-    override def compose[A, B, C](o1: Lens[A, B], o2: Prism[B, C]): Traversal[A, C] = Traversal(o1.desc ++ o2.desc)
-  }
-
   implicit val lensTraversal: Aux[Lens, Traversal, Traversal] = new Lub[Lens, Traversal] {
     override type T[A, B] = Traversal[A, B]
     override def compose[A, B, C](o1: Lens[A, B], o2: Traversal[B, C]): Traversal[A, C] = Traversal(o1.desc ++ o2.desc)
   }
 
-  implicit val prismLens: Aux[Prism, Lens, Traversal] = new Lub[Prism, Lens] {
-    override type T[A, B] = Traversal[A, B]
-    override def compose[A, B, C](o1: Prism[A, B], o2: Lens[B, C]): Traversal[A, C] = Traversal(o1.desc ++ o2.desc)
-  }
-
-  implicit val prismPrism: Aux[Prism, Prism, Prism] = new Lub[Prism, Prism] {
-    override type T[A, B] = Prism[A, B]
-    override def compose[A, B, C](o1: Prism[A, B], o2: Prism[B, C]): Prism[A, C] = Prism(o1.desc ++ o2.desc)
-  }
-
-  implicit val prismTraversal: Aux[Prism, Traversal, Traversal] = new Lub[Prism, Traversal] {
-    override type T[A, B] = Traversal[A, B]
-    override def compose[A, B, C](o1: Prism[A, B], o2: Traversal[B, C]): Traversal[A, C] = Traversal(o1.desc ++ o2.desc)
-  }
-
-
   implicit val traversalLens: Aux[Traversal, Lens, Traversal] = new Lub[Traversal, Lens] {
     override type T[A, B] = Traversal[A, B]
     override def compose[A, B, C](o1: Traversal[A, B], o2: Lens[B, C]): Traversal[A, C] = Traversal(o1.desc ++ o2.desc)
-  }
-
-  implicit val traversalPrism: Aux[Traversal, Prism, Traversal] = new Lub[Traversal, Prism] {
-    override type T[A, B] = Traversal[A, B]
-    override def compose[A, B, C](o1: Traversal[A, B], o2: Prism[B, C]): Traversal[A, C] = Traversal(o1.desc ++ o2.desc)
   }
 
   implicit val traversalTraversal: Aux[Traversal, Traversal, Traversal] = new Lub[Traversal, Traversal] {
