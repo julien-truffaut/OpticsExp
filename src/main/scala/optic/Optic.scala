@@ -13,10 +13,20 @@ sealed trait Optic[G[_,_] <: Optic[G, _, _], S, A] {
 
 case class Traversal[A,B](desc : List[String]) extends Optic[Traversal,A,B] {
   def self = this
+
+  def _compose[C](o: Lens[B, C]): Traversal[A, C] = compose(o)
+  def _compose[C](o: Traversal[B, C]): Traversal[A, C] = compose(o)
+
+  def _composeTraversal[C](o: Traversal[B, C]): Traversal[A, C] = compose(o)
 }
 
 case class Lens[A,B](desc : List[String]) extends Optic[Lens,A,B] {
   def self = this
+
+  def _compose[C](o: Lens[B, C]): Lens[A, C] = compose(o)
+  def _compose[C](o: Traversal[B, C]): Traversal[A, C] = compose(o)
+
+  def _composeTraversal[C](o: Traversal[B, C]): Traversal[A, C] = compose(o)
 }
 
 
