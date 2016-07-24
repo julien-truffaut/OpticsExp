@@ -8,7 +8,14 @@ object Test extends App {
 
   val foobar = foo compose bar
   println((foo compose bar compose foo).desc)
-
   println((foo compose fizz compose foo compose bar).desc)
+
+  val ages: Lens[String, List[Int]] = Lens(List("ages"))
+
+  println((ages compose Each.each[List[Int], Int]).desc)
+  println((ages composeTraversal Each.each).desc)
+
+  // fail
+  println((ages compose Each.each).desc)
 
 }

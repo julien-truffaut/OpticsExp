@@ -1,7 +1,7 @@
 
 import sbt._
 
-name := "Vanilla"
+name := "Optics"
 
 version := "0.1"
 

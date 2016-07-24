@@ -1,4 +1,4 @@
-# Vanilla
+# Optics experiment
 
 initialise: `sbt clean update compile`
 
