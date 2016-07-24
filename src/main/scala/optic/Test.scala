@@ -12,14 +12,14 @@ object Test extends App {
   val ages: Lens[String, List[Int]] = Lens(List("ages"))
   def all[A]: Traversal[List[A], A] = Traversal(List("all"))
 
-  // optics with a type parameter fail to infer
+  // optics with a type parameter are not inferred
   println((ages compose all).desc)
   // but it works for the following:
   println((ages compose all[Int]).desc)
   println((ages composeTraversal all).desc)
 
 
-  // same using overloaded compose:
+  // same using overloaded compose
   println((ages _compose all).desc)
   // but it works for the following:
   println((ages _compose all[Int]).desc)
