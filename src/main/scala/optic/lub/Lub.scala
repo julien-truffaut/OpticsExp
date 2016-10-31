@@ -1,4 +1,4 @@
-package optic
+package optic.lub
 
 sealed trait Lub[F[_, _] <: Optic[F, _, _], G[_, _] <: Optic[G, _, _]]{
   // add witness that F[_,_] <: T[_,_] and G[_,_] <: T[_,_]

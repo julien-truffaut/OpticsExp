@@ -1,7 +1,4 @@
-package lens2
-
-
-
+package optic.profunctor
 
 //class .. => Walkable p where
 //  walk :: (forall f. Applicative f => (a -> f b) -> s -> f t) -> p a b -> p s t

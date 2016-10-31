@@ -1,4 +1,4 @@
-package optic
+package optic.overload
 
 trait Each[S, A] {
   def each: Traversal[S, A]

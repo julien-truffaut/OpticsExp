@@ -1,4 +1,4 @@
-package optic
+package optic.lub
 
 object Test extends App {
 
@@ -13,15 +13,8 @@ object Test extends App {
   def all[A]: Traversal[List[A], A] = Traversal(List("all"))
 
   // optics with a type parameter are not inferred
-  println((ages compose all).desc)
+  // println((ages compose all).desc)
   // but it works for the following:
   println((ages compose all[Int]).desc)
-  println((ages composeTraversal all).desc)
 
-
-  // same using overloaded compose
-  println((ages _compose all).desc)
-  // but it works for the following:
-  println((ages _compose all[Int]).desc)
-  println((ages _composeTraversal all).desc)
 }
